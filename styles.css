@@ -1,0 +1,568 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    width: 100vw;
+    height: 100vh;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 500px auto;
+    grid-template-rows: 1fr 8fr 2fr;
+    margin: 0.5em;
+    background-color: #102F14;
+
+}
+
+.playerBoardContainer{
+   grid-row: 3/4;
+   grid-column: 1/3;
+   background:black;
+   margin-top: 0.5em;
+   display: grid;
+   grid-template: 1fr/ 2fr 1fr;
+}
+
+.leaderBoard{
+    max-height: 100px;
+    grid-row: 1/2;
+    grid-column: 1/3;
+    background-color: orange;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+    margin-bottom: 0.5em;
+}
+
+.leaderBoard .history_container{
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr;
+    color: white;
+}
+
+.questions .material-icons.md-light{
+    font-size: 36px;
+    margin: 0.5em 0 0 0.5em;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bolder;
+}
+
+.history_container .history_spins{
+    grid-column: 1/2;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-end;
+    overflow-x: hidden;
+}
+
+.history_container .history_bets{
+    grid-column: 2/3;
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    overflow-x: scroll;
+}
+
+.history_bets .winningBetType{
+    font-size: 24px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    margin: 1em 0 1em 2em;
+    padding: 10px;
+    background: #6B2512;
+    border-radius: 5px;
+
+}
+
+.history_container .history{
+    border-radius: 50%;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    margin: 2em 0 0 2em;
+    font-size: 24px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+}
+
+.history.red{
+    background-color: red;
+}
+
+.history.black{
+    background-color: black;
+}
+
+
+.bouncing_ball{
+    margin-left: 4em;
+    height: 100px;
+    width: 50px;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 2;
+}
+
+.bouncing_ball img{
+    width: 50px;
+    height: 50px;
+    animation-duration: 0.7s;
+    animation-iteration-count: 3;
+    transform-origin: bottom;
+}
+
+.leaderBoard .number_selected{
+    margin-left: 0.5em;
+    color: white;
+    text-align: center;
+    align-self: flex-end;
+    font-size: 72px;
+    font-family: 'Lobster', cursive;
+}
+
+.bounce{
+    animation-name: bouncingBall;
+    animation-timing-function: ease;
+}
+
+@keyframes bouncingBall{
+    0% {transform: scale(1,1) translate(0,0)}
+    10% {transform: scale(1, 1) translate(0,0)}
+    30% {transform: scale(1, 1) translate(0,0)}
+    50% {transform: scale(1.1, .9) translate(0, 150px);}
+    100% {transform: scale(1,1) translate(0, 0);}
+}
+
+.player_chips{
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 5em;
+}
+
+.player_chips .splits_corners{
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 2em;
+    justify-items: end;
+}
+
+.splits_corners button{
+    margin-top: 1em;
+    width: 125px;
+    height: 50px;
+    box-shadow: 3px 4px 0px 0px #899599;
+    background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+    background-color:#ededed;
+    border-radius:15px;
+    border:1px solid #d6bcd6;
+    display:inline-block;
+    cursor:pointer;
+    color:#3a8a9e;
+    font-family:Arial;
+    font-size:17px;
+    padding:7px 25px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #e1e2ed;
+    }
+
+.splits_corners button:hover {
+    background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+    background-color:#bab1ba;
+    }
+
+.splits_corners button:active {
+    position:relative;
+    top:1px;
+    }
+
+.chipValueText{
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+.player_chips .chip{
+    width: 125px;
+    height: 125px;
+}
+
+.player_chips .chip.selected{
+    width: 150px;
+    height: 150px;
+    z-index: 2;
+}
+
+.place_bets{
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+    font-size: 36px;
+}
+
+
+#wheel{
+    grid-column: 1 /2;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#wheel a img{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+
+#wheel.spin img{
+    rotate: 600deg;
+    transform: 3s ease-out;
+    -webkit-transform: rotate(720deg);
+    -webkit-transition: -webkit-transform 2.1s ease-out;
+}
+
+
+.board{
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: grid;
+    grid-template: 65% auto / 1fr
+
+}
+
+.insides_container{
+    grid-row: 1/2;
+    display: grid;
+    grid-template: 1fr / 10% auto 10%;
+}
+
+.insides_container .zeros_container{
+    grid-row: 1/2;
+    grid-column: 1/2;
+    display: grid;
+    grid-template: repeat(2, 1fr)/ 1fr 1fr;
+    align-content: stretch;
+    padding-left: 0.25em;
+}
+
+.insides_container .lanes_container>*{
+    color: white;
+    font-size: 24px;
+    writing-mode: vertical-lr;
+    text-align: center;
+    border: 3px solid white;
+    padding-left: 1em;
+}
+
+.zeros_container .zero{
+    grid-column: 1/3;
+    color: white;
+    writing-mode: vertical-lr;
+    text-align: center;
+    font-size: 36px;
+    border: 3px solid white;
+    padding-left: 0.5em;
+}
+
+
+.insides_container .numbersBoard_container{
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: grid;
+    grid-template: repeat(3, 1fr)/ repeat(12, 1fr);
+    grid-auto-flow: column;
+    direction: rtl;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.numbersBoard_container .tableNumber{
+    width: 100%;
+    height: 100%;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+}
+
+.tableNumber.black{
+    background: black;
+}
+
+.tableNumber.red{
+    background: red;
+}
+
+.tableNumber h4{
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+}
+
+.clickable.playerBet{
+    background-image: url(./resources/pokerChip_tableChip-clear_small.png);
+    background-repeat: no-repeat;
+}
+
+.insides_container .lanes_container{
+    grid-row: 1/2;
+    grid-column: 3/4;
+    display: grid;
+    grid-template-rows: 2;
+}
+
+
+.outsides_container{
+    grid-row: 2/3;
+    grid-column: 1/2;
+    display: grid;
+    grid-template: repeat(2, 1fr)/ 10% auto 10%;
+}
+
+.dozens_container{
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: grid;
+    grid-template: 1fr/ repeat(3, 1fr);
+    font-size: 48px;
+    color: white;
+    align-content: stretch;
+
+}
+
+.dozens_container .dozens{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid white;
+    align-items: center;
+    justify-content: center;
+}
+
+.bins_container{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: grid;
+    grid-template: 1fr/ repeat(6, 1fr);
+    color: white;
+    text-align: center;
+    align-content: stretch;
+    font-size: 36px;
+}
+
+
+.bins_container .outsides{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid white;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.outsides.red{
+    padding: .75em;
+    background: red;
+}
+
+.outsides.black{
+    padding: .75em;
+    background: black;
+}
+
+.outsides.red.playerBet, .outsides.black.playerBet{
+    background-image: url(./resources/pokerChip_tableChip-clear_small.png);
+    background-repeat: no-repeat;
+}
+
+.modal:not(.active){
+    display: none;
+
+}
+
+.modal.active{
+    position: absolute;
+    top: 5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.modal .content{
+    display: grid;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 2px 12px -8px black;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    background: white;
+    cursor: pointer;
+}
+
+.option, .selected_number{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+#option1, #option2{
+    grid-row: 1/2;
+}
+
+#option3, #option4{
+    grid-row: 3/4;
+}
+
+#option1, #option3{
+    grid-column: 1/2;
+}
+
+#option2, #option4{
+    grid-column: 3/4;
+}
+
+.selected_number{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    background: red;
+}
+
+.black.blue, .red.blue{
+    background-color: blue;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.modal:not(.open){
+    display: none;
+}
+
+.modal.open{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    z-index: 2;
+}
+
+.modal .modal_content{
+    display: grid;
+    grid-gap: 1em;
+    grid-template: 80% 1fr / 1fr 1fr;
+    margin: 0.5em;
+    width: 800px;
+    padding: 12px;
+    min-height: 200px;
+    max-height: 600px;
+    background: white;
+    box-shadow: 0 2px 12px -8px black;
+}
+
+.modal_content .instructions{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin-left: 1em;
+    overflow-y: scroll;
+}
+
+.modal_content .payouts{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    margin: 0 1em;
+}
+
+.payouts .payout{
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.modal_content footer{
+    grid-row: 2/3;
+    grid-column: span;
+}
+
+.modal_content footer>button{
+	box-shadow: 3px 4px 0px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.modal_content footer>button:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.modal_content footer>button:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+.modal .modal_content h1{
+    font-size: 32px;
+}
+
+.modal .modal_content h4{
+    font-weight: bolder;
+}
+
+.modal .modal_content ul li{
+    list-style: none;
+    margin: 0.5em 0;
+}
+
+.modal_content ul li.inner{
+    list-style: lower-roman;
+    margin-left: 2em;
+}
+
+
+
+
+
+

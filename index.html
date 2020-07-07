@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Tomorrow|Noto+Sans&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon:ital@1&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+        <!-- Load icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="styles.css" />
+        <script defer src="app.js"></script>
+    </head>
+    <body>
+        <header>
+            <audio id="wheelSpin">
+                <source src="./resources/rouletteWheel_2sec.wav" type="audio/mpeg">
+              </audio>
+              <audio id="winning">
+                <source src="./resources/level-win.wav" type="audio/mpeg">
+              </audio>
+        </header>
+        <main>
+            <section id="app">
+                <section class="leaderBoard">
+                    <section class="questions"><span class="material-icons md-light">
+                        help_outline
+                        </span></section>
+                    <div class="bouncing_ball"><img src="./resources/roulette_ball.png"></div>
+                    <h1 class="number_selected"></h1>
+                    <section class="history_container">
+                        <section class="history_spins"></section>
+                        <section class="history_bets"></section>
+                    </section>
+                </section>
+                <div id="wheel">
+                    <a href="#"><img src="./resources/11-removebg-preview.png"></a>
+                </div>
+                <section class="board">
+                    <section class="insides_container">
+                        <section class="zeros_container">
+                        </section>
+                        <section class="numbersBoard_container"></section>
+                        <section class="lanes_container"></section>
+                    </section>
+                    <section class="outsides_container">
+                        <section class="dozens_container"></section>
+                        <section class="bins_container"></section>
+                    </section>
+                </section>
+                <section class="playerBoardContainer">
+                    <section class= "player_chips">
+                        <div class="chip_wrapper">
+                            <img class="chip" id="5" src="./resources/pokerChip_red-removebg-restored.png">
+                            <div class="chipValueText">5&euro;</div>
+                        </div>
+                        <div class="chip_wrapper">
+                            <img class="chip" id="25" src="./resources/pokerChip_blue-removebg-restored.png">
+                            <div class="chipValueText">25&euro;</div>
+                        </div>
+                        <div class="chip_wrapper">
+                            <img class="chip" id="50" src="./resources/pokerChip_green-removebg-restored.png">
+                            <div class="chipValueText">50&euro;</div>
+                        </div>
+                        <div class="chip_wrapper">
+                            <img class="chip" id="100" src="./resources/pokerChip_purple-removebg-restored.png">
+                            <div class="chipValueText">100&euro;</div>
+                        </div>
+                        <div class="splits_corners">
+                            <button type="button" id="split">Split Bet</button>>
+                        </div>
+                    </section>
+                    <section class="place_bets">
+                        <div class="currentAnte"><h2></h2><h3>Total Bet</h3></div>
+                        <div class="playerCash"><h2></h2><h3>Winnings</h3></div>
+                    </section>
+                </section>
+            </section>
+        </main>
+        <section class="modal">
+            <section class="modal_content">
+                <article class="instructions">
+                    <h1>Game Play</h1>
+                    <ul>
+                        <li>
+                            <h4>ANTE</h4>
+                            <p>Select one of four chip values in player console to set the "ante"</p>
+                        </li>
+                        <li>
+                            <h4>BETTING</h4>
+                            <p>Click any position on board to place bet. Clicking same position multiple times will increase your bet on that position.</p>
+                        </li>
+                        <li>
+                            <h4>SPLIT BETS</h4>
+                            <p>Players can "split" one bet between two number positions. 
+                                <ul>
+                                    <li class="inner">Hold the SHIFT Key while selecting two adjacent numbers</li>
+                                    <li class="inner">Selected numbers will be hilighted in <span style="color: blue;">BLUE</span></li>
+                                    <li class="inner">Press "Split Bet" button in player console to confirm bet</li>
+                                    <li class="inner">Once bet is confirmed, the token icons will appear in both squares signifying successful bet.</li>
+                                </ul>
+                            </p>
+                        </li>
+                        <li>
+                            <h4>WHEEL SPIN</h4>
+                            <p>Click the wheel to begin spinning. The landed number will be displayed in the top section of the window</p>
+                        </li>
+                        <li>
+                            <h4>WINNING</h4>
+                            <p>Winning bets will be displayed at the top section of the window until the next round of bets. Player cash will automtically update with total winnings</p>
+                        </li>
+                        <li>
+                            <h4>MONEY</h4>
+                            <p>If you run out of money, please send credit card information to anonymous@no-where.com ... JK</p>
+                        </li>
+                    </ul>
+                </article>
+                <article class="payouts">
+                    <h1>Payouts</h1>
+                    <ul>
+                        <li><span class="payout">Straight (1 number):</span> 35-1 payout</li>
+                        <li><span class="payout">Split (2 numbers):</span> 17-1 payout</li>
+                        <li><span class="payout">Colours (18 numbers):</span> 1-1 payout</li>
+                        <li><span class="payout">Dozens (12 numbers):</span> 2-1 payout</li>
+                        <li><span class="payout">Highs/Lows (1-18 or 19-36):</span> 1-1 payout</li>
+                        <li><span class="payout">Odds/Evens (18 numbers):</span> 1-1 payout</li>
+                        <li><span class="payout">Columns (12 numbers):</span> 2-1 payout</li>
+                    </ul>
+                </article>
+                <footer><button id="close_modal">Got It!</button></footer>
+            </section>
+        </section>
+    </body>
+</html>
